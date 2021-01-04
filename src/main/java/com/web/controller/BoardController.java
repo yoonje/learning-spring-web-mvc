@@ -17,23 +17,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/board")
 public class BoardController {
-    //@See https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-spring-beans-and-dependency-injection.html
-    private final BoardService boardService;
 
-    public BoardController(BoardService boardService) {
-        this.boardService = boardService;
-    }
+    @Autowired
+    BoardService boardService;
 
-    @GetMapping({"", "/"})
-    public String board(@RequestParam(value = "idx", defaultValue = "0") Long idx, Model model) {
+    @GetMapping("")
+    public String board(@RequestParam(value = "idx", defaultValue = "1") Long idx, Model model) {
         model.addAttribute("board", boardService.findBoardByIdx(idx));
-        return "/board/form";
+        return "board/form";
     }
 
     @GetMapping("/list")
     public String list(@PageableDefault Pageable pageable, Model model) {
         model.addAttribute("boardList", boardService.findBoardList(pageable));
-        return "/board/list";
+        return "board/list";
     }
 
 }
