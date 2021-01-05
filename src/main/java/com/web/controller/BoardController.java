@@ -18,8 +18,8 @@ public class BoardController {
     @Autowired
     BoardService boardService;
 
-    @GetMapping("")
-    public String board(@RequestParam(value = "idx", defaultValue = "1") Long idx, Model model) {
+    @GetMapping({"", "/"})
+    public String board(@RequestParam(value = "idx", defaultValue = "0") Long idx, Model model) {
         // board를 통해서 타임리프에 사용할 값을 템플릿으로 넘김
         model.addAttribute("board", boardService.findBoardByIdx(idx));
         return "board/form";
