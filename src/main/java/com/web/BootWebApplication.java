@@ -21,6 +21,7 @@ public class BootWebApplication {
 		SpringApplication.run(BootWebApplication.class, args);
 	}
 
+	// CommandLineRunner를 통해서 애플리케이션 구동 이후 코드를 수행시켜서 DB에 데이터 삽입
 	@Bean
 	public CommandLineRunner runner(UserRepository userRepository, BoardRepository boardRepository) throws Exception {
 		return (args) -> {

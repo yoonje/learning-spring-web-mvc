@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-/**
- * Created by KimYJ on 2017-07-12.
- */
 @Controller
 @RequestMapping("/board")
 public class BoardController {
@@ -23,12 +20,14 @@ public class BoardController {
 
     @GetMapping("")
     public String board(@RequestParam(value = "idx", defaultValue = "1") Long idx, Model model) {
+        // board를 통해서 타임리프에 사용할 값을 템플릿으로 넘김
         model.addAttribute("board", boardService.findBoardByIdx(idx));
         return "board/form";
     }
 
     @GetMapping("/list")
     public String list(@PageableDefault Pageable pageable, Model model) {
+        // boardList를 통해서 타임리프에 사용할 값을 템플릿으로 넘김
         model.addAttribute("boardList", boardService.findBoardList(pageable));
         return "board/list";
     }
