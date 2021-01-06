@@ -4,6 +4,9 @@
 ## Requirements
 - [JDK 1.8+](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 - [gradle](https://gradle.org/)
+- [H2](https://www.h2database.com/html/main.html)
+
+**H2 설치 이후 실행하고 application.yml에 맞게 설정해야함**
 
 ## Build
 ```
